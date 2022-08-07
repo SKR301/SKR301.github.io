@@ -6,12 +6,17 @@ const windowHeight = Dimensions.get('window').height;
 export default function Homepage() {
 	return (
 		<View style={homepage.body}>
-        {/* splash on bg when clicked */}
+        {/* random coloured splash on bg when clicked */}
+            <View>
+                {/* Top bar: Projects, Contact, Blog */}
+                {/* On top Right */}
+            </View>
+
             <View style={homepage.homepageText}>
                 <Text adjustsFontSizeToFit={true} style={homepage.salutation}>Hey, <Text style={{fontSize: 20}}>How You Doin'?</Text></Text>
-                {/* change character colour randomly on click */}
+                {/* change character colour of name randomly on click */}
                 <Text adjustsFontSizeToFit={true} style={homepage.name}><Text>I'm </Text>Saurav KumaR</Text>
-                {/* make this program tag change automatically programmer, coder, player, developer, Puzzle lover ... */}
+                {/* make this profession tag change automatically programmer, coder, player, developer, Puzzle lover ... */}
                 <Text adjustsFontSizeToFit={true} style={homepage.work}>Programmer</Text>
             </View>
 		</View>
@@ -21,7 +26,7 @@ export default function Homepage() {
 const homepage = StyleSheet.create({
 	body: {
         height: windowHeight,
-		backgroundColor: '#eee'
+		backgroundColor: '#eee',
 	},
     homepageText: {
         height: windowHeight,
