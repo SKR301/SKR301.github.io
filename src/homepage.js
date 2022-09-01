@@ -1,6 +1,12 @@
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 import { useEffect, useState } from 'react';
-import img from '../assets/splashes/demo.png'; 
+import blueSplash from '../assets/splashes/blueSplash.png'; 
+import greenSplash from '../assets/splashes/greenSplash.png'; 
+import indigoSplash from '../assets/splashes/indigoSplash.png'; 
+import orangeSplash from '../assets/splashes/orangeSplash.png'; 
+import redSplash from '../assets/splashes/redSplash.png'; 
+import violetSplash from '../assets/splashes/violetSplash.png'; 
+import yellowSplash from '../assets/splashes/yellowSplash.png'; 
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -9,18 +15,39 @@ export default function Homepage() {
     const [splash, setSplash] = useState([]);
 
     const homescreenClickHandler = (e) => {
-        setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:'a'}]);
+        setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
     }
 
     useEffect(() => {
-        console.log(splash);
+        // console.log(splash);
     }, [splash])
 
     const splashesToRender = []
 
     splash.map((element, index) => {
-        // show splash image here but in bg and fixed position 
-        splashesToRender.push(<Image key={index} source={img} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        // erase splash after 2 sec
+        if(element.col == 1){
+            splashesToRender.push(<Image key={index} source={blueSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        if(element.col == 2){
+            splashesToRender.push(<Image key={index} source={greenSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        if(element.col == 3){
+            splashesToRender.push(<Image key={index} source={indigoSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        if(element.col == 4){
+            splashesToRender.push(<Image key={index} source={orangeSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        if(element.col == 5){
+            splashesToRender.push(<Image key={index} source={redSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        if(element.col == 6){
+            splashesToRender.push(<Image key={index} source={violetSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        if(element.col == 7){
+            splashesToRender.push(<Image key={index} source={yellowSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
+        }
+        
     });
 
     return (
