@@ -20,17 +20,17 @@ export default function Homepage() {
 
     splash.map((element, index) => {
         // show splash image here but in bg and fixed position 
-        splashesToRender.push(<Image key={index} source={img} style={{ width: 305, height: 159 }}></Image>)
+        splashesToRender.push(<Image key={index} source={img} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
     });
 
     return (
-		<View style={homepage.body}>
+		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)} >
         {/* random coloured splash on bg when clicked */}
             <View>
                 {/* Top bar: Projects, Contact, Blog */}
                 {/* On top Right */}
             </View>
-            <View style={homepage.homepageText} onClick={(e)=>homescreenClickHandler(e)} >
+            <View style={homepage.homepageText}>
                 {
                     splashesToRender
                 }
