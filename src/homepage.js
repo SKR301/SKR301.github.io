@@ -1,11 +1,12 @@
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 import { useEffect, useState } from 'react';
+import img from '../assets/splashes/demo.png'; 
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Homepage() {
-    const [splash, setSplash] = useState([{}]);
+    const [splash, setSplash] = useState([]);
 
     const homescreenClickHandler = (e) => {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:'a'}]);
@@ -19,20 +20,20 @@ export default function Homepage() {
 
     splash.map((element, index) => {
         // show splash image here but in bg and fixed position 
-        splashesToRender.push(<Text key={index}>{element.x}</Text>)
+        splashesToRender.push(<Image key={index} source={img} style={{ width: 305, height: 159 }}></Image>)
     });
 
     return (
-		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)} >
+		<View style={homepage.body}>
         {/* random coloured splash on bg when clicked */}
             <View>
                 {/* Top bar: Projects, Contact, Blog */}
                 {/* On top Right */}
             </View>
-            {
-                splashesToRender
-            }
-            <View style={homepage.homepageText}>
+            <View style={homepage.homepageText} onClick={(e)=>homescreenClickHandler(e)} >
+                {
+                    splashesToRender
+                }
                 <Text adjustsFontSizeToFit={true} style={homepage.salutation}>Hey, <Text style={{fontSize: 20}}>How You Doin'?</Text></Text>
                 {/* change character colour of name randomly on hover */}
                 <Text adjustsFontSizeToFit={true} style={homepage.name}><Text>I'm </Text>Saurav KumaR</Text>
