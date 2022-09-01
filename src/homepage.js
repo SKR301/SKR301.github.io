@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import blueSplash from '../assets/splashes/blueSplash.png'; 
 import greenSplash from '../assets/splashes/greenSplash.png'; 
 import indigoSplash from '../assets/splashes/indigoSplash.png'; 
@@ -10,22 +10,34 @@ import yellowSplash from '../assets/splashes/yellowSplash.png';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+// add proper professions 
+const professionList = ['Programmer', 'Coder', 'Developer', 'Puzzle lover', 'Critical', 'Innovative', 'Inquisitive', 'Funny', 'Movie-Narc'];
 
 export default function Homepage() {
     const [splash, setSplash] = useState([]);
+    const [profession, setProfession] = useState('Programmer');
+    let index = 0;
 
     const homescreenClickHandler = (e) => {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
     }
 
+    const shuffle = useCallback(() => {
+        index = (index + 1) % professionList.length;
+        setProfession(professionList[index]);
+    }, []);
+    
     useEffect(() => {
         // console.log(splash);
-    }, [splash])
+        const intervalID = setInterval(shuffle, 1000);
+        return () => clearInterval(intervalID);
+    }, [splash, shuffle])
 
     const splashesToRender = []
 
     splash.map((element, index) => {
         // erase splash after 2 sec
+        // add random size to splashes
         if(element.col == 1){
             splashesToRender.push(<Image key={index} source={blueSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
         }
@@ -52,7 +64,6 @@ export default function Homepage() {
 
     return (
 		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)} >
-        {/* random coloured splash on bg when clicked */}
             <View>
                 {/* Top bar: Projects, Contact, Blog */}
                 {/* On top Right */}
@@ -64,8 +75,10 @@ export default function Homepage() {
                 <Text adjustsFontSizeToFit={true} style={homepage.salutation}>Hey, <Text style={{fontSize: 20}}>How You Doin'?</Text></Text>
                 {/* change character colour of name randomly on hover */}
                 <Text adjustsFontSizeToFit={true} style={homepage.name}><Text>I'm </Text>Saurav KumaR</Text>
-                {/* make this profession tag change automatically programmer, coder, player, developer, Puzzle lover ... */}
-                <Text adjustsFontSizeToFit={true} style={homepage.work}>Programmer</Text>
+                {/* make smooth transitions, fadein/slidein/random transitions etc... */}
+                <View>
+                    <Text adjustsFontSizeToFit={true} style={homepage.work}>{profession}</Text>
+                </View>
             </View>
 		</View>
 	);
