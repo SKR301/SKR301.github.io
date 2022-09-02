@@ -12,28 +12,36 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 // add proper professions 
 const professionList = ['Programmer', 'Coder', 'Developer', 'Puzzle lover', 'Critical', 'Innovative', 'Inquisitive', 'Funny', 'Movie-Narc'];
+let professionIndex = 0;
+const colorList = ['blue', 'red', 'green', 'springgreen', 'black', 'purple', 'yellow', 'aqua', 'coral'];
 
 export default function Homepage() {
     const [splash, setSplash] = useState([]);
     const [profession, setProfession] = useState('Programmer');
-    let index = 0;
+    const [name, setName] = useState([{letter:'S', col:'black'}, {letter:'a', col:'black'}, {letter:'u', col:'black'}, {letter:'r', col:'black'}, {letter:'a', col:'black'}, {letter:'v', col:'black'}, {letter:' ', col:'black'}, {letter:'K', col:'black'}, {letter:'u', col:'black'}, {letter:'m', col:'black'}, {letter:'a', col:'black'}, {letter:'r', col:'black'}]);
 
     const homescreenClickHandler = (e) => {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
     }
 
-    const shuffle = useCallback(() => {
-        index = (index + 1) % professionList.length;
-        setProfession(professionList[index]);
+    const onNameHoverHandler = (char) => {
+        let randomCol = colorList[Math.floor(Math.random()*colorList.length)];
+        
+    }
+
+    const switchProfession = useCallback(() => {
+        professionIndex = (professionIndex + 1) % professionList.length;
+        setProfession(professionList[professionIndex]);
     }, []);
     
     useEffect(() => {
         // console.log(splash);
-        const intervalID = setInterval(shuffle, 1000);
+        const intervalID = setInterval(switchProfession, 1000);
         return () => clearInterval(intervalID);
-    }, [splash, shuffle])
+    }, [splash, name, switchProfession]);
 
-    const splashesToRender = []
+    const splashesToRender = [];
+    const nameToRender = [];
 
     splash.map((element, index) => {
         // erase splash after 2 sec
@@ -59,7 +67,10 @@ export default function Homepage() {
         if(element.col == 7){
             splashesToRender.push(<Image key={index} source={yellowSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-110, left: element.x-190, zIndex: -1}}></Image>)
         }
-        
+    });
+
+    name.map((element, index) => {
+        nameToRender.push(<Text key={index} style={{color: element.col}} onMouseOver={()=>onNameHoverHandler(element.letter)} >{element.letter}</Text>)
     });
 
     return (
@@ -74,7 +85,11 @@ export default function Homepage() {
                 }
                 <Text adjustsFontSizeToFit={true} style={homepage.salutation}>Hey, <Text style={{fontSize: 20}}>How You Doin'?</Text></Text>
                 {/* change character colour of name randomly on hover */}
-                <Text adjustsFontSizeToFit={true} style={homepage.name}><Text>I'm </Text>Saurav KumaR</Text>
+                <Text adjustsFontSizeToFit={true} style={homepage.name}><Text>I'm </Text>
+                    {
+                        nameToRender
+                    }
+                </Text>
                 {/* make smooth transitions, fadein/slidein/random transitions etc... */}
                 <View>
                     <Text adjustsFontSizeToFit={true} style={homepage.work}>{profession}</Text>
