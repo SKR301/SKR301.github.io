@@ -13,6 +13,7 @@ const windowHeight = Dimensions.get('window').height;
 // add proper professions 
 const professionList = ['Programmer', 'Coder', 'Developer', 'Puzzle lover', 'Critical', 'Innovative', 'Inquisitive', 'Funny', 'Movie-Narc'];
 let professionIndex = 0;
+// add better colors 
 const colorList = ['blue', 'red', 'green', 'springgreen', 'black', 'purple', 'yellow', 'aqua', 'coral'];
 
 export default function Homepage() {
@@ -24,9 +25,11 @@ export default function Homepage() {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
     }
 
-    const onNameHoverHandler = (char) => {
+    const onNameHoverHandler = (index) => {
         let randomCol = colorList[Math.floor(Math.random()*colorList.length)];
-        
+        let copyOfName = [...name];
+        copyOfName[index].col = randomCol;
+        setName(copyOfName);
     }
 
     const switchProfession = useCallback(() => {
@@ -35,7 +38,6 @@ export default function Homepage() {
     }, []);
     
     useEffect(() => {
-        // console.log(splash);
         const intervalID = setInterval(switchProfession, 1000);
         return () => clearInterval(intervalID);
     }, [splash, name, switchProfession]);
@@ -70,7 +72,7 @@ export default function Homepage() {
     });
 
     name.map((element, index) => {
-        nameToRender.push(<Text key={index} style={{color: element.col}} onMouseOver={()=>onNameHoverHandler(element.letter)} >{element.letter}</Text>)
+        nameToRender.push(<Text key={index} style={{color: element.col}} onMouseOver={()=>onNameHoverHandler(index)} >{element.letter}</Text>)
     });
 
     return (
@@ -84,7 +86,6 @@ export default function Homepage() {
                     splashesToRender
                 }
                 <Text adjustsFontSizeToFit={true} style={homepage.salutation}>Hey, <Text style={{fontSize: 20}}>How You Doin'?</Text></Text>
-                {/* change character colour of name randomly on hover */}
                 <Text adjustsFontSizeToFit={true} style={homepage.name}><Text>I'm </Text>
                     {
                         nameToRender
