@@ -133,7 +133,7 @@ export default function Homepage() {
     return (
 		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)}>
             <View style={homepage.navbar}>
-                {/* add on click  */}
+                {/* add on click to link */}
                 <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem0]} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
                     <Text style={homepage.navbarItemText}>Projects</Text>
                 </TouchableOpacity>
@@ -162,6 +162,3 @@ export default function Homepage() {
 		</View>
 	);
 }
-
-
-
