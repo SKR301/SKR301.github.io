@@ -20,6 +20,7 @@ export default function Homepage() {
     const [splash, setSplash] = useState([]);
     const [profession, setProfession] = useState('Programmer');
     const [name, setName] = useState([{letter:'S', col:'black'}, {letter:'a', col:'black'}, {letter:'u', col:'black'}, {letter:'r', col:'black'}, {letter:'a', col:'black'}, {letter:'v', col:'black'}, {letter:' ', col:'black'}, {letter:'K', col:'black'}, {letter:'u', col:'black'}, {letter:'m', col:'black'}, {letter:'a', col:'black'}, {letter:'r', col:'black'}]);
+    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState(0);
 
     const homescreenClickHandler = (e) => {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
@@ -73,13 +74,58 @@ export default function Homepage() {
 
     name.map((element, index) => {
         nameToRender.push(<Text key={index} style={{color: element.col}} onMouseOver={()=>onNameHoverHandler(index)} >{element.letter}</Text>)
+    });    
+
+    const homepage = StyleSheet.create({
+        body: {
+            backgroundColor: '#eee',
+            height: windowHeight,
+        },
+        navbar: {
+            alignSelf: 'flex-end',
+            flexDirection: 'row',
+            marginTop: 20,
+            borderLeftWidth: 20,
+            borderTopWidth: 20,
+            borderLeftColor: 'transparent',
+            borderTopColor: 'mediumblue',
+            zIndex: 1,
+        },
+        navbarItem: {
+            paddingHorizontal: 25,
+            paddingVertical: 10,
+            // borderBottomWidth: navbarItemUndelineSize,
+            // borderBottomColor: 'green'
+        },
+        navbarItemText:{
+            fontSize: 20
+        },
+        homepageText: {
+            marginHorizontal: 100,
+            marginVertical: 200,
+            padding: 25,
+            alignItems:'center',
+            justifyContent: 'center',
+        },
+        salutation: {
+            fontSize: 40,
+            alignSelf: 'flex-start',
+            marginStart: 50
+        },
+        name: {
+            fontSize: 100,
+        },
+        profession: {
+            fontSize: 50,
+        },
     });
 
     return (
 		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)}>
             <View style={homepage.navbar}>
                 {/* add on click  */}
-                <TouchableOpacity style={homepage.navbarItem}>
+                <TouchableOpacity style={homepage.navbarItem}>  
+                {/* onMouseOver={setNavbarItemUndelineSize(5)}> */}
                     <Text style={homepage.navbarItemText}>Projects</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={homepage.navbarItem}>
@@ -101,53 +147,12 @@ export default function Homepage() {
                 </Text>
                 {/*TODO: make smooth transitions, fadein/slidein/random transitions etc... */}
                 <View>
-                    <Text adjustsFontSizeToFit={true} style={homepage.work}>{profession}</Text>
+                    <Text adjustsFontSizeToFit={true} style={homepage.profession}>{profession}</Text>
                 </View>
             </View>
 		</View>
 	);
 }
 
-const homepage = StyleSheet.create({
-	body: {
-		backgroundColor: '#eee',
-        height: windowHeight,
-        flexDirection: 'column', 
-	},
-    navbar: {
-        alignSelf: 'flex-end',
-        flexDirection: 'row',
-        marginTop: 20,
-        borderLeftWidth: 20,
-        borderTopWidth: 20,
-        borderLeftColor: 'transparent',
-        borderTopColor: 'mediumblue',
-        zIndex: 1,
-    },
-    navbarItem: {
-        paddingHorizontal: 25,
-        paddingVertical: 10
-    },
-    navbarItemText:{
-        fontSize: 20
-    },
-    homepageText: {
-        // height: windowHeight,
-        marginHorizontal: 100,
-        marginVertical: 200,
-        padding: 25,
-		alignItems:'center',
-        justifyContent: 'center',
-    },
-    salutation: {
-        fontSize: 40,
-        alignSelf: 'flex-start',
-        marginStart: 50
-    },
-    name: {
-        fontSize: 100,
-    },
-    work: {
-        fontSize: 50,
-    }
-});
+
+
