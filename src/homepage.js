@@ -20,7 +20,7 @@ export default function Homepage() {
     const [splash, setSplash] = useState([]);
     const [profession, setProfession] = useState('Programmer');
     const [name, setName] = useState([{letter:'S', col:'black'}, {letter:'a', col:'black'}, {letter:'u', col:'black'}, {letter:'r', col:'black'}, {letter:'a', col:'black'}, {letter:'v', col:'black'}, {letter:' ', col:'black'}, {letter:'K', col:'black'}, {letter:'u', col:'black'}, {letter:'m', col:'black'}, {letter:'a', col:'black'}, {letter:'r', col:'black'}]);
-    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState(0);
+    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState([0,0,0]);
 
     const homescreenClickHandler = (e) => {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
@@ -41,7 +41,7 @@ export default function Homepage() {
     useEffect(() => {
         const intervalID = setInterval(switchProfession, 1000);
         return () => clearInterval(intervalID);
-    }, [splash, name, switchProfession]);
+    }, [splash, name, navbarItemUndelineSize, switchProfession]);
 
     const splashesToRender = [];
     const nameToRender = [];
@@ -94,8 +94,18 @@ export default function Homepage() {
         navbarItem: {
             paddingHorizontal: 25,
             paddingVertical: 10,
-            // borderBottomWidth: navbarItemUndelineSize,
-            // borderBottomColor: 'green'
+        },
+        navbarItem0: {
+            borderBottomWidth: navbarItemUndelineSize[0],
+            borderBottomColor: 'blue',
+        },
+        navbarItem1: {
+            borderBottomWidth: navbarItemUndelineSize[1],
+            borderBottomColor: 'blue',
+        },
+        navbarItem2: {
+            borderBottomWidth: navbarItemUndelineSize[2],
+            borderBottomColor: 'blue',
         },
         navbarItemText:{
             fontSize: 20
@@ -124,14 +134,13 @@ export default function Homepage() {
 		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)}>
             <View style={homepage.navbar}>
                 {/* add on click  */}
-                <TouchableOpacity style={homepage.navbarItem}>  
-                {/* onMouseOver={setNavbarItemUndelineSize(5)}> */}
+                <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem0]} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
                     <Text style={homepage.navbarItemText}>Projects</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={homepage.navbarItem}>
+                <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem1]} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
                     <Text style={homepage.navbarItemText}>Contact</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={homepage.navbarItem}>
+                <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem2]} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
                     <Text style={homepage.navbarItemText}>Blog</Text>
                 </TouchableOpacity>
             </View>
