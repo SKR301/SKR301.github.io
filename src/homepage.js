@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Link } from "react-router-dom";
 import { useEffect, useState, useCallback } from 'react';
 import blueSplash from '../assets/splashes/blueSplash.png'; 
 import greenSplash from '../assets/splashes/greenSplash.png'; 
@@ -135,13 +136,13 @@ export default function Homepage() {
             <View style={homepage.navbar}>
                 {/* add on click to link */}
                 <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem0]} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
-                    <Text style={homepage.navbarItemText}>Projects</Text>
+                    <Link to='/projects'><Text style={homepage.navbarItemText}>Projects</Text></Link>
                 </TouchableOpacity>
                 <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem1]} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
-                    <Text style={homepage.navbarItemText}>Contact</Text>
+                    <Link to='/contact'><Text style={homepage.navbarItemText}>Contact</Text></Link>
                 </TouchableOpacity>
                 <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem2]} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
-                    <Text style={homepage.navbarItemText}>Blog</Text>
+                    <Link to='/blogs'><Text style={homepage.navbarItemText}>Blog</Text></Link>
                 </TouchableOpacity>
             </View>
             <View style={homepage.homepageText}>
