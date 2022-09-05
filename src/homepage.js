@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native';
-import { Link } from "react-router-dom";
 import { useEffect, useState, useCallback } from 'react';
 import blueSplash from '../assets/splashes/blueSplash.png'; 
 import greenSplash from '../assets/splashes/greenSplash.png'; 
@@ -8,6 +7,7 @@ import orangeSplash from '../assets/splashes/orangeSplash.png';
 import redSplash from '../assets/splashes/redSplash.png'; 
 import violetSplash from '../assets/splashes/violetSplash.png'; 
 import yellowSplash from '../assets/splashes/yellowSplash.png'; 
+import Navbar from './components/navbar';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -21,8 +21,7 @@ export default function Homepage() {
     const [splash, setSplash] = useState([]);
     const [profession, setProfession] = useState('Programmer');
     const [name, setName] = useState([{letter:'S', col:'black'}, {letter:'a', col:'black'}, {letter:'u', col:'black'}, {letter:'r', col:'black'}, {letter:'a', col:'black'}, {letter:'v', col:'black'}, {letter:' ', col:'black'}, {letter:'K', col:'black'}, {letter:'u', col:'black'}, {letter:'m', col:'black'}, {letter:'a', col:'black'}, {letter:'r', col:'black'}]);
-    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState([0,0,0]);
-
+    
     const homescreenClickHandler = (e) => {
         setSplash((splash) => [...splash, {x:e.clientX, y:e.clientY, col:Math.ceil(Math.random()*7)}]);
     }
@@ -42,7 +41,7 @@ export default function Homepage() {
     useEffect(() => {
         const intervalID = setInterval(switchProfession, 1000);
         return () => clearInterval(intervalID);
-    }, [splash, name, navbarItemUndelineSize, switchProfession]);
+    }, [splash, name, switchProfession]);
 
     const splashesToRender = [];
     const nameToRender = [];
@@ -82,35 +81,6 @@ export default function Homepage() {
             backgroundColor: '#eee',
             height: windowHeight,
         },
-        navbar: {
-            alignSelf: 'flex-end',
-            flexDirection: 'row',
-            marginTop: 20,
-            borderLeftWidth: 20,
-            borderTopWidth: 20,
-            borderLeftColor: 'transparent',
-            borderTopColor: 'mediumblue',
-            zIndex: 1,
-        },
-        navbarItem: {
-            paddingHorizontal: 25,
-            paddingVertical: 10,
-        },
-        navbarItem0: {
-            borderBottomWidth: navbarItemUndelineSize[0],
-            borderBottomColor: 'blue',
-        },
-        navbarItem1: {
-            borderBottomWidth: navbarItemUndelineSize[1],
-            borderBottomColor: 'blue',
-        },
-        navbarItem2: {
-            borderBottomWidth: navbarItemUndelineSize[2],
-            borderBottomColor: 'blue',
-        },
-        navbarItemText:{
-            fontSize: 20
-        },
         homepageText: {
             marginHorizontal: 100,
             marginVertical: 200,
@@ -133,18 +103,7 @@ export default function Homepage() {
 
     return (
 		<View style={homepage.body} onClick={(e)=>homescreenClickHandler(e)}>
-            <View style={homepage.navbar}>
-                {/* add on click to link */}
-                <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem0]} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
-                    <Link to='/projects'><Text style={homepage.navbarItemText}>Projects</Text></Link>
-                </TouchableOpacity>
-                <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem1]} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
-                    <Link to='/contact'><Text style={homepage.navbarItemText}>Contact</Text></Link>
-                </TouchableOpacity>
-                <TouchableOpacity style={[homepage.navbarItem, homepage.navbarItem2]} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
-                    <Link to='/blogs'><Text style={homepage.navbarItemText}>Blog</Text></Link>
-                </TouchableOpacity>
-            </View>
+            <Navbar />
             <View style={homepage.homepageText}>
                 {
                     splashesToRender
