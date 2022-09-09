@@ -4,7 +4,7 @@ import Navbar from './components/navbar';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-// update colors 
+// update colors
 // add project details as json 
 export default function Projects() {
 	return (
