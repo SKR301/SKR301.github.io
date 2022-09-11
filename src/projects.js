@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, ScrollView } from 'react-native';
+import { Link, Navigate } from "react-router-dom";
 import Navbar from './components/navbar';
 
 const windowWidth = Dimensions.get('window').width;
@@ -11,8 +12,8 @@ export default function Projects() {
 // add project details as json 
 	const [projectDet, setProjectDet] = useState([{
 		name: 'Name0',
+		lastUpdatedOn: 'lastUpdate0',
 		desc: 'Desc0',
-		lastUpdate: 'lastUpdate0',
 		techBucket: 'techBucket0',
 		author: 'Author0',
 		contributor: 'Contributor0',
@@ -20,8 +21,8 @@ export default function Projects() {
 		githubLink: 'www.github.com/project0',
 	},{
 		name: 'Name1',
+		lastUpdatedOn: 'lastUpdate1',
 		desc: 'Desc1',
-		lastUpdate: 'lastUpdate1',
 		techBucket: 'techBucket1',
 		author: 'Author1',
 		contributor: 'Contributor1',
@@ -29,14 +30,35 @@ export default function Projects() {
 		githubLink: 'www.github.com/project0',
 	},{
 		name: 'Name2',
+		lastUpdatedOn: 'lastUpdate2',
 		desc: 'Desc2',
-		lastUpdate: 'lastUpdate2',
 		techBucket: 'techBucket2',
 		author: 'Author2',
 		contributor: 'Contributor2',
 		extraContributor: 'x2',
 		githubLink: 'www.github.com/project0',
-	},])
+	},]);
+
+	useEffect(()=>{
+
+	},[projectDet])
+
+
+	const projectListToRender = [];
+	projectDet.map((element, index) => {
+        projectListToRender.push(
+			<View style={projects.projectCard} key={index}>
+				<Text>
+					<Text style={projects.projectName}>{element.name}</Text>
+					<Text style={projects.githubLink}><Link to={element.githubLink}><u>{element.githubLink}</u></Link></Text>
+				</Text>
+				<Text style={projects.contributors}>Author: <b>{element.author}</b> | Contributors: <b>{element.contributor}</b> + {element.extraContributor}</Text>
+				<Text style={projects.projectLastUpdate}>{element.lastUpdatedOn}</Text>
+				<Text style={projects.projectDesc}>{element.desc}</Text>
+				<Text style={projects.projectTechBucket}>{element.techBucket}</Text>
+				</View>
+		);
+    }); 
 
 	return (
 		<View>
@@ -45,33 +67,9 @@ export default function Projects() {
 				<ScrollView style={projects.projectListContainer}>
 					{/* expand to show more desc and show snapshot on hover */}
 					{/* click to open project link */}
-					<View style={projects.projectCard}>
-						<Text>
-							<Text style={projects.projectName}>Name</Text>
-							<Text style={projects.projectLastUpdate}>lastUpdatedOn</Text>
-						</Text>
-						<Text style={projects.projectDesc}>Desc</Text>
-						<Text style={projects.projectTechBucket}>[Tech bucket]</Text>
-						<Text style={projects.contributors}>Author|Contributor + x</Text>
-					</View>
-					<View style={projects.projectCard}>
-						<Text>
-							<Text style={projects.projectName}>Name</Text>
-							<Text style={projects.projectLastUpdate}>lastUpdatedOn</Text>
-						</Text>
-						<Text style={projects.projectDesc}>Desc</Text>
-						<Text style={projects.projectTechBucket}>[Tech bucket]</Text>
-						<Text style={projects.contributors}>Author|Contributor + x</Text>
-					</View>
-					<View style={projects.projectCard}>
-						<Text>
-							<Text style={projects.projectName}>Name</Text>
-							<Text style={projects.projectLastUpdate}>lastUpdatedOn</Text>
-						</Text>
-						<Text style={projects.projectDesc}>Desc</Text>
-						<Text style={projects.projectTechBucket}>[Tech bucket]</Text>
-						<Text style={projects.contributors}>Author|Contributor + x</Text>
-					</View>
+					{
+						projectListToRender
+					}
 				</ScrollView>
 				<View style={projects.projetctSnapshot}>
 					<Text>Project Snapshot</Text>
@@ -103,24 +101,31 @@ const projects = StyleSheet.create({
 	},
 	projectName: {
 		fontSize: 30,
-		color: 'blue'
+		color: '#000',
+	},
+	contributors: {
+		fontSize: 10,
 	},
 	projectDesc: {
 		fontSize: 20,
-		marginLeft: 100,
-		color: 'cornflowerblue',
+		color: '#999',
 	},
 	projectLastUpdate: {
 		textAlign: 'right',
 		fontSize: 15,
+		marginTop: -15,
 		marginLeft: 10,
-		color: 'darkblue',
+		color: '#555',
 		fontStyle: 'italic',
 	},
 	projectTechBucket: {
-		marginVertical: 15,
 		fontSize: 15,
 		color: 'blue',
+	},
+	githubLink: {
+		marginLeft: 20,
+		color: 'blue',
+		fontStyle: 'italic',
 	},
 	projetctSnapshot: {
 		flex: 1
