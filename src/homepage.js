@@ -12,7 +12,7 @@ import Navbar from './components/navbar';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 // TODO: add proper professions 
-const professionList = ['Programmer', 'Coder', 'Developer', 'Puzzle lover', 'Designer', 'Freelancer', 'Innovator'];
+const professionList = ['Programmer', 'Engineer', 'Coder', 'Developer', 'Puzzle lover', 'Designer', 'Freelancer', 'Innovator'];
 let professionIndex = 0;
 // TODO: add better colors 
 const colorList = ['blue', 'red', 'green', 'springgreen', 'black', 'purple', 'yellow', 'aqua', 'coral'];
