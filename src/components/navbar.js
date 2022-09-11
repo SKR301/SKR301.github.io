@@ -6,17 +6,18 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Navbar() {
-    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState([0,0,0]);
+    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState([0,0,0,0]);
+    const [toHome, setToHome] = useState(false);
     const [toProjects, setToProjects] = useState(false);
     const [toContact, setToContact] = useState(false);
     const [toBlogs, setToBlogs] = useState(false);
-    const [currentPage, setCurrentPage] = useState('');
 
     useEffect(() => {
+        setToHome(false);
         setToProjects(false);
         setToContact(false);
         setToBlogs(false);
-    }, [navbarItemUndelineSize, toProjects]);
+    }, [navbarItemUndelineSize, toProjects, toContact, toBlogs, toHome]);
 
     const navbar = StyleSheet.create({
         navbarContainer: {
@@ -45,11 +46,18 @@ export default function Navbar() {
             borderBottomWidth: navbarItemUndelineSize[2],
             borderBottomColor: 'blue',
         },
+        navbarItem3: {
+            borderBottomWidth: navbarItemUndelineSize[3],
+            borderBottomColor: 'blue',
+        },
         navbarItemText:{
             fontSize: 20
         },
     });
 
+    if(toHome == true){
+        return <Navigate to='/' />;
+    }
     if(toProjects == true){
         return <Navigate to='/projects' />;
     }
@@ -63,13 +71,16 @@ export default function Navbar() {
     // navigation from same page is giving error 
 	return (
 		<View style={navbar.navbarContainer}>
-            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem0]} onPress={()=>{setToProjects(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
+        <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem0]} onPress={()=>{setToHome(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
+            <Text style={navbar.navbarItemText}>Home</Text>
+        </TouchableOpacity>
+            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem1]} onPress={()=>{setToProjects(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
                 <Text style={navbar.navbarItemText}>Projects</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem1]} onPress={()=>{setToContact(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
+            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem2]} onPress={()=>{setToContact(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
                 <Text style={navbar.navbarItemText}>Contact</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem2]} onPress={()=>{setToBlogs(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0])}}>
+            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem3]} onPress={()=>{setToBlogs(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
                 <Text style={navbar.navbarItemText}>Blog</Text>
             </TouchableOpacity>
         </View>
