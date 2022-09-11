@@ -52,7 +52,7 @@ export default function Projects() {
 				</Text>
 				<Text style={projects.contributors}>Author: <b>{element.author}</b> | Contributors: <b>{element.contributor}</b> + {element.extraContributor}</Text>
 				<Text style={projects.projectLastUpdate}>{element.lastUpdatedOn}</Text>
-				<Text style={projects.projectDesc}>{element.desc}</Text>
+				{/* <Text style={projects.projectDesc}>{element.desc}</Text> */}
 				<Text style={projects.projectTechBucket}>{element.techBucket}</Text>
 			</View>
 		);
