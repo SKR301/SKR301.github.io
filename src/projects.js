@@ -9,7 +9,6 @@ const windowHeight = Dimensions.get('window').height;
 export default function Projects() {
 
 // update colors
-// add project details as json 
 	const [projectDet, setProjectDet] = useState([{
 		name: 'Name0',
 		lastUpdatedOn: 'lastUpdate0',
@@ -43,7 +42,6 @@ export default function Projects() {
 
 	},[projectDet])
 
-
 	const projectListToRender = [];
 	projectDet.map((element, index) => {
         projectListToRender.push(
@@ -56,7 +54,7 @@ export default function Projects() {
 				<Text style={projects.projectLastUpdate}>{element.lastUpdatedOn}</Text>
 				<Text style={projects.projectDesc}>{element.desc}</Text>
 				<Text style={projects.projectTechBucket}>{element.techBucket}</Text>
-				</View>
+			</View>
 		);
     }); 
 
