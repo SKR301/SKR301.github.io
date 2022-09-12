@@ -11,7 +11,6 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function Projects() {
 
-// update colors
 	const [projectDet, setProjectDet] = useState([{
 		projectCategory: 'Web',
 		projectCardDet:[{
@@ -53,14 +52,23 @@ export default function Projects() {
 
 	const projectListToRender = [];
 	projectDet.map((element, index) => {
+		const projectInnerListToRender = [];
+		element.projectCardDet.map((innerElement, innerIndex) => {
+			projectInnerListToRender.push(
+				<View key={innerIndex} style={projects.projectCard}>
+					<Image source={innerElement.img} style={projects.projectImage}/>
+					<Text style={projects.projectName}><Link to={innerElement.projectLink}>{innerElement.name}</Link></Text>
+				</View>
+			);
+		});
+
         projectListToRender.push(
-			<View style={projects.projectCategory}>
+			<View key={index} style={projects.projectCategory}>
 				<Text style={projects.projectCategoryTitle}>{element.projectCategory}</Text>
 				<ScrollView style={projects.projectScrollBar} horizontal={true}>
-					<View style={projects.projectCard}>
-						<Image source={element.projectCardDet.img} style={projects.projectImage}/>
-						<Text style={projects.projectName}><Link to={element.projectCardDet.projectLink}>{element.projectCardDet.name}</Link></Text>
-					</View>
+					{
+						projectInnerListToRender
+					}
 				</ScrollView>
 			</View>
 		);
