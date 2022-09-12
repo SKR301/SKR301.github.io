@@ -6,7 +6,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Navbar() {
-    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState([0,0,0,0]);
+    const [navbarItemUndelineSize, setNavbarItemUndelineSize] = useState([5,5,5,5]);
     const [toHome, setToHome] = useState(false);
     const [toProjects, setToProjects] = useState(false);
     const [toContact, setToContact] = useState(false);
@@ -70,16 +70,16 @@ export default function Navbar() {
 
 	return (
 		<View style={navbar.navbarContainer}>
-        <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem0]} onPress={()=>{setToHome(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
+        <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem0]} onPress={()=>{setToHome(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,5,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([5,5,5,5])}}>
             <Text style={navbar.navbarItemText}>Home</Text>
         </TouchableOpacity>
-            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem1]} onPress={()=>{setToProjects(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,5,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
+            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem1]} onPress={()=>{setToProjects(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,5,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([5,5,5,5])}}>
                 <Text style={navbar.navbarItemText}>Projects</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem2]} onPress={()=>{setToContact(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
+            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem2]} onPress={()=>{setToContact(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,5,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([5,5,5,5])}}>
                 <Text style={navbar.navbarItemText}>Contact</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem3]} onPress={()=>{setToBlogs(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([0,0,0,5])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
+            <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem3]} onPress={()=>{setToBlogs(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,5,5,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([5,5,5,5])}}>
                 <Text style={navbar.navbarItemText}>Blog</Text>
             </TouchableOpacity>
         </View>
