@@ -98,7 +98,7 @@ const projects = StyleSheet.create({
 		alignSelf: 'flex-start',
 		flexDirection: 'row',
 		width: windowWidth/8,
-		marginTop: 20,
+		marginTop: 20,	
 		marginLeft: 10,
 		borderRightWidth: 20,
 		borderTopWidth: 20,
@@ -112,7 +112,7 @@ const projects = StyleSheet.create({
 	},
 	projectScrollBar: {
 		backgroundColor: '#eee',
-		borderRadius: 5,
+		borderRadius: 10,
 		margin: 10,
 		padding: 20,
 	},
