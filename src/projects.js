@@ -57,10 +57,8 @@ export default function Projects() {
 			projectInnerListToRender.push(
 				<View key={innerIndex} style={projects.projectCard}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
-					{/* <Link to={innerElement.projectLink} style={projects.projectName}><Text style={projects.projectName}>{innerElement.name}</Text></Link> */}
-					<TouchableOpacity style={projects.projectName} onPress={()=>{ return <Navigate to={innerElement.projectLink} />}}>
-						<Text>{innerElement.name}</Text>
-					</TouchableOpacity>
+					{/* remove underline from link  */}
+					<Link to={innerElement.projectLink}><Text style={projects.projectName}>{innerElement.name}</Text></Link>
 				</View>
 			);
 		});
@@ -99,21 +97,27 @@ const projects = StyleSheet.create({
 		marginStart: 50,
 	},
 	projectScrollBar: {
-
+		backgroundColor: '#eee',
+		borderRadius: 5,
+		margin: 10,
+		padding: 20,
 	},
 	projectCard:{
-		height: 200,
+		height: 225,
 		width: 200,
-		margin: 25,
+		marginVertical: 10,
+		marginHorizontal: 50,
+		textAlign: 'center',
 	},
 	projectImage: {
 		height: 200,
 		width: 200,
+		borderRadius: 25,
+		opacity: 0.8,
 	},
 	projectName: {
 		fontSize: 20,
 		textAlign: 'center',
-		// textDecoration: 'none',
 	}
 
 	
