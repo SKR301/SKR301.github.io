@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { Link, Navigate } from "react-router-dom";
 import Navbar from './components/navbar';
 import snap0 from '../assets/projectSnaps/snap0.jpg';
@@ -57,7 +57,10 @@ export default function Projects() {
 			projectInnerListToRender.push(
 				<View key={innerIndex} style={projects.projectCard}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
-					<Text style={projects.projectName}><Link to={innerElement.projectLink}>{innerElement.name}</Link></Text>
+					{/* <Link to={innerElement.projectLink} style={projects.projectName}><Text style={projects.projectName}>{innerElement.name}</Text></Link> */}
+					<TouchableOpacity style={projects.projectName} onPress={()=>{ return <Navigate to={innerElement.projectLink} />}}>
+						<Text>{innerElement.name}</Text>
+					</TouchableOpacity>
 				</View>
 			);
 		});
@@ -110,6 +113,7 @@ const projects = StyleSheet.create({
 	projectName: {
 		fontSize: 20,
 		textAlign: 'center',
+		// textDecoration: 'none',
 	}
 
 	

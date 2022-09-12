@@ -68,7 +68,6 @@ export default function Navbar() {
         return <Navigate to='/blogs' />;
     }
 
-    // navigation from same page is giving error 
 	return (
 		<View style={navbar.navbarContainer}>
         <TouchableOpacity style={[navbar.navbarItem, navbar.navbarItem0]} onPress={()=>{setToHome(true)}} onMouseEnter={() => {setNavbarItemUndelineSize([5,0,0,0])}} onMouseLeave={()=>{setNavbarItemUndelineSize([0,0,0,0])}}>
