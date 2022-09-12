@@ -34,7 +34,7 @@ export default function Projects() {
 			name: 'project1',
 			projectLink: 'link1',
 		}]},{
-		projectCategory: 'CLI',
+		projectCategory: 'Console',
 		projectCardDet:[{
 			img: snap2,
 			name: 'project0',
@@ -65,7 +65,9 @@ export default function Projects() {
 
         projectListToRender.push(
 			<View key={index} style={projects.projectCategory}>
-				<Text style={projects.projectCategoryTitle}>{element.projectCategory}</Text>
+				<View style={projects.projectCategoryContainer}>
+					<Text style={projects.projectCategoryTitle}>{element.projectCategory}</Text>
+				</View>
 				<ScrollView style={projects.projectScrollBar} horizontal={true}>
 					{
 						projectInnerListToRender
@@ -92,9 +94,21 @@ const projects = StyleSheet.create({
 	projectCategory: {
 		marginTop: 50
 	},
+	projectCategoryContainer: {
+		alignSelf: 'flex-start',
+		flexDirection: 'row',
+		width: windowWidth/8,
+		marginTop: 20,
+		marginLeft: 10,
+		borderRightWidth: 20,
+		borderTopWidth: 20,
+		borderRightColor: 'transparent',
+		borderTopColor: 'grey',
+		zIndex: 1,
+	},
 	projectCategoryTitle: {
 		fontSize: 30,
-		marginStart: 50,
+		marginStart: 25,
 	},
 	projectScrollBar: {
 		backgroundColor: '#eee',

@@ -50,25 +50,25 @@ export default function Homepage() {
         //TODO: erase splash after 2 sec
         //TODO: add random size to splashes
         if(element.col == 1){
-            splashesToRender.push(<Image key={index} source={blueSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={blueSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
         if(element.col == 2){
-            splashesToRender.push(<Image key={index} source={greenSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={greenSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
         if(element.col == 3){
-            splashesToRender.push(<Image key={index} source={indigoSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={indigoSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
         if(element.col == 4){
-            splashesToRender.push(<Image key={index} source={orangeSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={orangeSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
         if(element.col == 5){
-            splashesToRender.push(<Image key={index} source={redSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={redSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
         if(element.col == 6){
-            splashesToRender.push(<Image key={index} source={violetSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={violetSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
         if(element.col == 7){
-            splashesToRender.push(<Image key={index} source={yellowSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1}}></Image>)
+            splashesToRender.push(<Image key={index} source={yellowSplash} style={{ width: 200, height: 200, position: 'absolute', top: element.y-400, left: element.x-190, zIndex: -1, opacity: 0.5}}></Image>)
         }
     });
 
@@ -99,6 +99,9 @@ export default function Homepage() {
         profession: {
             fontSize: 50,
         },
+        splashImg: {
+            
+        }
     });
 
     return (
