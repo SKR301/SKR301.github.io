@@ -15,59 +15,77 @@ export default function Projects() {
 		projectCategory: 'Web',
 		projectCardDet:[{
 			img: snap0,
-			name: 'project0',
+			name: 'project0aaaaa aaaaaaaaaaaaaaaaaaaaa aaaaaaa',
 			projectLink: 'link0',
+			overlay: false,
 		},
 		{
 			img: snap0,
 			name: 'project1',
 			projectLink: 'link1',
+			overlay: false,
 		}]},{
 		projectCategory: 'Android',
 		projectCardDet:[{
 			img: snap1,
 			name: 'project0',
 			projectLink: 'link0',
+			overlay: false,
 		},
 		{
 			img: snap1,
 			name: 'project1',
 			projectLink: 'link1',
+			overlay: false,
 		}]},{
 		projectCategory: 'Console',
 		projectCardDet:[{
 			img: snap2,
 			name: 'project0',
 			projectLink: 'link0',
+			overlay: false,
 		},
 		{
 			img: snap2,
 			name: 'project1',
 			projectLink: 'link1',
+			overlay: false,
 		}]}]);
 
-	useEffect(()=>{
+	const onMouseEnterCard = (index, innerIndex) => {
+		let newProjectDet = JSON.parse(JSON.stringify(projectDet));
+		newProjectDet[index].projectCardDet[innerIndex].overlay = true;
+		setProjectDet(newProjectDet);
+	}
 
-	},[projectDet])
+	const onMouseLeaveCard = (index, innerIndex) => {
+		let newProjectDet = JSON.parse(JSON.stringify(projectDet));
+		newProjectDet[index].projectCardDet[innerIndex].overlay = false;
+		setProjectDet(newProjectDet);
+	}
+
+	useEffect(()=>{
+		// onMouseLeaveCard();
+	},[projectDet]);
 
 	const projectListToRender = [];
 	projectDet.map((element, index) => {
 		const projectInnerListToRender = [];
 		element.projectCardDet.map((innerElement, innerIndex) => {
 			let projectName = innerElement.name;
-			if(innerElement.name.length > 15){
+			if(innerElement.name.length > 15 && !innerElement.overlay){
 				projectName = projectName.substring(0,15)+'...';				
 			}
 
 			projectInnerListToRender.push(
-				<View key={innerIndex} style={projects.projectCard}>
+				<TouchableOpacity key={innerIndex} style={projects.projectCard} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
 					{/* remove underline from link */}
 					{/* overlay on hover and redirect to link on click */}
-					<View style={projects.projectName}>
+					<View style={(innerElement.overlay)?projects.projectNameOverlay:projects.projectName}>
 						<Link to={innerElement.projectLink}><Text style={projects.projectNameText}>{projectName}</Text></Link>
 					</View>
-				</View>
+				</TouchableOpacity>
 			);
 		});
 
@@ -79,9 +97,9 @@ export default function Projects() {
 					<Text style={projects.projectCategoryTitle}>{element.projectCategory}</Text>
 				</TouchableOpacity>
 				<ScrollView style={projects.projectScrollBar} horizontal={true}>
-					{
-						projectInnerListToRender
-					}
+				{
+					projectInnerListToRender
+				}
 				</ScrollView>
 			</View>
 		);
@@ -142,14 +160,25 @@ const projects = StyleSheet.create({
 	projectName: {
 		padding: 10,
 		marginTop: -39,
-		backgroundColor: '#aaa',
+		backgroundColor: '#eee',
 		borderBottomLeftRadius: 25,
 		borderBottomRightRadius: 25,
 		opacity: 0.75,
 	},
+	projectNameOverlay: {
+		height: 200,
+		width: 200,
+		marginTop: -200,
+		backgroundColor: '#444',
+		borderRadius: 25,
+		opacity: 0.75,
+		alignItems:'center',
+		justifyContent: 'center',
+	},
 	projectNameText: {
 		fontSize: 15,
 		opacity: 1,
+		whiteSpace: 'pre-wrap', overflowWrap: 'break-word'
 	}
 
 	
