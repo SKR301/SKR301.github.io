@@ -10,49 +10,53 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Projects() {
-
-	const [projectDet, setProjectDet] = useState([{
-		projectCategory: 'Web',
-		projectCardDet:[{
-			img: snap0,
-			name: 'project0',
-			projectLink: 'link0',
-			overlay: false,
-		},
+	const [projectCategoryDisplayStatus, setProjectCategoryDisplayyStatus] = useState([1,1,1])
+	const [projectDet, setProjectDet] = useState([
 		{
-			img: snap0,
-			name: 'project1',
-			projectLink: 'link1',
-			overlay: false,
-		}]},{
-		projectCategory: 'Android',
-		projectCardDet:[{
-			img: snap1,
-			name: 'project0',
-			projectLink: 'link0',
-			overlay: false,
-		},
-		{
-			img: snap1,
-			name: 'project1',
-			projectLink: 'link1',
-			overlay: false,
-		}]},{
-		projectCategory: 'Console',
-		projectCardDet:[{
-			img: snap2,
-			name: 'project0',
-			projectLink: 'link0',
-			overlay: false,
-		},
-		{
-			img: snap2,
-			name: 'project1',
-			projectLink: 'link1',
-			overlay: false,
-		}]}]);
+			projectCategory: 'Web',
+			projectCardDet:[{
+				img: snap0,
+				name: 'project0',
+				projectLink: 'link0',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'project1',
+				projectLink: 'link1',
+				overlay: false,
+			}]
+		},{
+			projectCategory: 'Android',
+			projectCardDet:[{
+				img: snap1,
+				name: 'project0',
+				projectLink: 'link0',
+				overlay: false,
+			},
+			{
+				img: snap1,
+				name: 'project1',
+				projectLink: 'link1',
+				overlay: false,
+			}]
+		},{
+			projectCategory: 'Console',
+			projectCardDet:[{
+				img: snap2,
+				name: 'project0',
+				projectLink: 'link0',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'project1',
+				projectLink: 'link1',
+				overlay: false,
+			}]
+		}
+	]);
 	const navigate = useNavigate();
-
 
 	const onMouseEnterCard = (index, innerIndex) => {
 		let newProjectDet = JSON.parse(JSON.stringify(projectDet));
@@ -66,8 +70,14 @@ export default function Projects() {
 		setProjectDet(newProjectDet);
 	}
 
+	const categoryTitleClickHandler = (index) => {
+		let newProjectCategoryDisplayStatus = [...projectCategoryDisplayStatus];
+		newProjectCategoryDisplayStatus[index] = !newProjectCategoryDisplayStatus[index];
+		setProjectCategoryDisplayyStatus(newProjectCategoryDisplayStatus);
+	}
+
 	useEffect(()=>{
-		// onMouseLeaveCard();
+		
 	},[projectDet]);
 
 	const projectListToRender = [];
@@ -80,12 +90,10 @@ export default function Projects() {
 			}
 
 			projectInnerListToRender.push(
-				<TouchableOpacity key={innerIndex} style={projects.projectCard} onPress={()=>{navigate('./wherever')}} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
+				<TouchableOpacity key={innerIndex} style={projects.projectCard} onPress={()=>{navigate(innerElement.projectLink)}} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
-					{/* remove underline from link */}
-					{/* overlay on hover and redirect to link on click */}
 					<View style={(innerElement.overlay)?projects.projectNameOverlay:projects.projectName}>
-						<Link to={innerElement.projectLink}><Text style={projects.projectNameText}>{projectName}</Text></Link>
+						<Text style={projects.projectNameText}>{projectName}</Text>
 					</View>
 				</TouchableOpacity>
 			);
@@ -93,19 +101,19 @@ export default function Projects() {
 
         projectListToRender.push(
 			<View key={index} style={projects.projectCategory}>
-				{/* hide on click */}
+				{/* better indicator */}
 				{/* change bg when hidden */}
-				<TouchableOpacity style={projects.projectCategoryContainer}>
+				<TouchableOpacity style={projects.projectCategoryContainer} onPress={()=>{categoryTitleClickHandler(index)}}>
 					<Text style={projects.projectCategoryTitle}>{element.projectCategory}</Text>
 				</TouchableOpacity>
-				<ScrollView style={projects.projectScrollBar} horizontal={true}>
+				<ScrollView style={(projectCategoryDisplayStatus[index])?projects.projectScrollBar:projects.projectScrollBarHidden} horizontal={true}>
 				{
 					projectInnerListToRender
 				}
 				</ScrollView>
 			</View>
 		);
-    }); 
+    });
 
 	return (
 		<View>
@@ -141,10 +149,13 @@ const projects = StyleSheet.create({
 		marginStart: 25,
 	},
 	projectScrollBar: {
-		backgroundColor: '#eee',
+		// backgroundColor: '#eee',
 		borderRadius: 10,
 		margin: 10,
 		padding: 20,
+	},
+	projectScrollBarHidden: {
+		display: 'none',
 	},
 	projectCard:{
 		height: 200,
@@ -161,7 +172,7 @@ const projects = StyleSheet.create({
 	},
 	projectName: {
 		padding: 10,
-		marginTop: -39,
+		marginTop: -37,
 		backgroundColor: '#eee',
 		borderBottomLeftRadius: 25,
 		borderBottomRightRadius: 25,
