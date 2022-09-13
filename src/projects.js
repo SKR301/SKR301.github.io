@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Navbar from './components/navbar';
 import snap0 from '../assets/projectSnaps/snap0.jpg';
 import snap1 from '../assets/projectSnaps/snap3.jpg';
@@ -15,7 +15,7 @@ export default function Projects() {
 		projectCategory: 'Web',
 		projectCardDet:[{
 			img: snap0,
-			name: 'project0aaaaa aaaaaaaaaaaaaaaaaaaaa aaaaaaa',
+			name: 'project0',
 			projectLink: 'link0',
 			overlay: false,
 		},
@@ -51,6 +51,8 @@ export default function Projects() {
 			projectLink: 'link1',
 			overlay: false,
 		}]}]);
+	const navigate = useNavigate();
+
 
 	const onMouseEnterCard = (index, innerIndex) => {
 		let newProjectDet = JSON.parse(JSON.stringify(projectDet));
@@ -78,7 +80,7 @@ export default function Projects() {
 			}
 
 			projectInnerListToRender.push(
-				<TouchableOpacity key={innerIndex} style={projects.projectCard} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
+				<TouchableOpacity key={innerIndex} style={projects.projectCard} onPress={()=>{navigate('./wherever')}} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
 					{/* remove underline from link */}
 					{/* overlay on hover and redirect to link on click */}
@@ -145,7 +147,7 @@ const projects = StyleSheet.create({
 		padding: 20,
 	},
 	projectCard:{
-		height: 225,
+		height: 200,
 		width: 200,
 		marginVertical: 10,
 		marginHorizontal: 50,
@@ -169,7 +171,7 @@ const projects = StyleSheet.create({
 		height: 200,
 		width: 200,
 		marginTop: -200,
-		backgroundColor: '#444',
+		backgroundColor: '#eee',
 		borderRadius: 25,
 		opacity: 0.75,
 		alignItems:'center',
@@ -178,8 +180,5 @@ const projects = StyleSheet.create({
 	projectNameText: {
 		fontSize: 15,
 		opacity: 1,
-		whiteSpace: 'pre-wrap', overflowWrap: 'break-word'
 	}
-
-	
 });
