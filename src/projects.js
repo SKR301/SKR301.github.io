@@ -57,7 +57,8 @@ export default function Projects() {
 			projectInnerListToRender.push(
 				<View key={innerIndex} style={projects.projectCard}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
-					{/* remove underline from link  */}
+					{/* remove underline from link */}
+					{/* show project name on bottom 25% of image and overlay on hover and redirect to link on click  */}
 					<Link to={innerElement.projectLink}><Text style={projects.projectName}>{innerElement.name}</Text></Link>
 				</View>
 			);
@@ -65,9 +66,11 @@ export default function Projects() {
 
         projectListToRender.push(
 			<View key={index} style={projects.projectCategory}>
-				<View style={projects.projectCategoryContainer}>
+				{/* hide on click */}
+				{/* change bg when hidden */}
+				<TouchableOpacity style={projects.projectCategoryContainer}>
 					<Text style={projects.projectCategoryTitle}>{element.projectCategory}</Text>
-				</View>
+				</TouchableOpacity>
 				<ScrollView style={projects.projectScrollBar} horizontal={true}>
 					{
 						projectInnerListToRender
@@ -92,7 +95,7 @@ const projects = StyleSheet.create({
 		marginTop: 25,
 	},
 	projectCategory: {
-		marginTop: 50
+		marginTop: 50,
 	},
 	projectCategoryContainer: {
 		alignSelf: 'flex-start',
