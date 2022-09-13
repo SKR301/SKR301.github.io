@@ -54,12 +54,19 @@ export default function Projects() {
 	projectDet.map((element, index) => {
 		const projectInnerListToRender = [];
 		element.projectCardDet.map((innerElement, innerIndex) => {
+			let projectName = innerElement.name;
+			if(innerElement.name.length > 15){
+				projectName = projectName.substring(0,15)+'...';				
+			}
+
 			projectInnerListToRender.push(
 				<View key={innerIndex} style={projects.projectCard}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
 					{/* remove underline from link */}
-					{/* show project name on bottom 25% of image and overlay on hover and redirect to link on click  */}
-					<Link to={innerElement.projectLink}><Text style={projects.projectName}>{innerElement.name}</Text></Link>
+					{/* overlay on hover and redirect to link on click */}
+					<View style={projects.projectName}>
+						<Link to={innerElement.projectLink}><Text style={projects.projectNameText}>{projectName}</Text></Link>
+					</View>
 				</View>
 			);
 		});
@@ -133,8 +140,16 @@ const projects = StyleSheet.create({
 		opacity: 0.8,
 	},
 	projectName: {
-		fontSize: 20,
-		textAlign: 'center',
+		padding: 10,
+		marginTop: -39,
+		backgroundColor: '#aaa',
+		borderBottomLeftRadius: 25,
+		borderBottomRightRadius: 25,
+		opacity: 0.75,
+	},
+	projectNameText: {
+		fontSize: 15,
+		opacity: 1,
 	}
 
 	
