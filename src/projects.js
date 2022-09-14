@@ -143,13 +143,12 @@ const projects = StyleSheet.create({
 		borderRightColor: 'transparent',
 		borderTopColor: 'grey',
 		zIndex: 1,
-	},
+	},	
 	projectCategoryTitle: {
 		fontSize: 30,
 		marginStart: 25,
 	},
 	projectScrollBar: {
-		// backgroundColor: '#eee',
 		borderRadius: 10,
 		margin: 10,
 		padding: 20,
