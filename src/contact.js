@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, TextInput } from 'react-native';
 import Navbar from './components/navbar';
 
 const windowWidth = Dimensions.get('window').width;
@@ -10,18 +10,18 @@ export default function Contact() {
 			<Navbar />
 			<View style={contact.container}>
 				<View style={contact.form}>
-					<View style={contact.inputName}>
+					<TextInput style={contact.inputFormData} placeholder={'Your name ...'}>
 
-					</View>
-					<View style={contact.inputEmail}>
+					</TextInput>
+					<TextInput style={contact.inputFormData} placeholder={'Your Email ...'}>
 
-					</View>
-					<View style={contact.inputSubject}>
+					</TextInput>
+					<TextInput style={contact.inputFormData} placeholder={'Enter Subject ...'}>
 
-					</View>
-					<View style={contact.inputBody}>
-
-					</View>
+					</TextInput>
+					<TextInput style={{...contact.inputFormData, ...contact.inputEmail}} multiline={true} placeholder={'Content ...'}>
+						
+					</TextInput>
 					<TouchableOpacity style={contact.attachFile}>
 
 					</TouchableOpacity>
@@ -31,7 +31,7 @@ export default function Contact() {
 				</View>
 				<View style={contact.resume}>
 					<TouchableOpacity style={contact.resumeBtn}>
-
+						<Text style={contact.resumeText}>Download Resume</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -40,5 +40,49 @@ export default function Contact() {
 }
 
 const contact = StyleSheet.create({
+	container: {
+		flex: 2,
+		flexDirection: 'row',
+		backgroundColor: '#ddd',
+		marginHorizontal: 250,
+		marginVertical: 100,
+		padding: 50,
+		borderRadius: 75,
+	},
+	form: {
+		flex: 1,
+		margin: 10,
+		padding: 5,
+		borderRightColor: '#aaa',
+		borderRightWidth: 2,
+	},
+	inputFormData: {
+		backgroundColor: '#eee',
+		borderRadius: 20,
+		padding: 10,
+		fontSize: 15,
+		margin: 5,
+	},
+	inputName: {
+		backgroundColor: '#eee',
+		borderRadius: 20,
+		padding: 10,
+		fontSize: 15,
+	},
+	inputEmail: {
+		height: 100,
+	},
+	inputSubject: {
+
+	},
+	inputBody: {
+
+	},
+	resume: {
+		flex: 1,
+	},
+	resumeBtn: {
+
+	},
 
 });
