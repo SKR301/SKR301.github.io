@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, TextInput } from 'react-native';
 import Navbar from './components/navbar';
 
 const windowWidth = Dimensions.get('window').width;
@@ -19,14 +19,14 @@ export default function Contact() {
 					<TextInput style={contact.inputFormData} placeholder={'Enter Subject ...'}>
 
 					</TextInput>
-					<TextInput style={{...contact.inputFormData, ...contact.inputEmail}} multiline={true} placeholder={'Content ...'}>
+					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message ...'}>
 						
 					</TextInput>
-					<TouchableOpacity style={contact.attachFile}>
-
-					</TouchableOpacity>
+					{/* add attach file  */}
 					<TouchableOpacity style={contact.sendMail}>
-
+						{/* replace text with icon */}
+						{/* add send mail function */}
+						<Text style={contact.sendMailText}>Send</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={contact.resume}>
@@ -44,7 +44,7 @@ const contact = StyleSheet.create({
 		flex: 2,
 		flexDirection: 'row',
 		backgroundColor: '#ddd',
-		marginHorizontal: 250,
+		marginHorizontal: 350,
 		marginVertical: 100,
 		padding: 50,
 		borderRadius: 75,
@@ -59,30 +59,45 @@ const contact = StyleSheet.create({
 	inputFormData: {
 		backgroundColor: '#eee',
 		borderRadius: 20,
-		padding: 10,
+		padding: 20,
 		fontSize: 15,
-		margin: 5,
+		margin: 5,	
 	},
 	inputName: {
-		backgroundColor: '#eee',
-		borderRadius: 20,
-		padding: 10,
-		fontSize: 15,
 	},
 	inputEmail: {
-		height: 100,
 	},
 	inputSubject: {
 
 	},
 	inputBody: {
-
+		height: 150,
+	},
+	sendMail: {
+		backgroundColor: '#555',
+		borderRadius: 15,
+		textAlign: 'center',
+		width: 75,
+		padding: 10,
+		alignSelf: 'flex-end'
+	},
+	sendMailText: {
+		fontSize:20,
+		color: '#eee',
 	},
 	resume: {
 		flex: 1,
+		justifyContent: 'center'
 	},
 	resumeBtn: {
-
+		backgroundColor: '#999',
+		borderRadius: 15,
+		textAlign: 'center',
+		padding: 20,
+		margin: 125,
 	},
-
+	resumeText: {
+		fontSize:20,
+		color: '#000',
+	}
 });
