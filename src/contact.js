@@ -1,29 +1,26 @@
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity, TextInput } from 'react-native';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/navbar';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Contact() {
+	const navigate = useNavigate();
+
 	return (
 		<View>
 			<Navbar />
 			<View style={contact.container}>
 				<View style={contact.form}>
-					<TextInput style={contact.inputFormData} placeholder={'Your name ...'}>
-
-					</TextInput>
-					<TextInput style={contact.inputFormData} placeholder={'Your Email ...'}>
-
-					</TextInput>
-					<TextInput style={contact.inputFormData} placeholder={'Enter Subject ...'}>
+					<TextInput style={contact.inputFormData} placeholder={'Name ...'}>
 
 					</TextInput>
 					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message ...'}>
 						
 					</TextInput>
 					{/* add attach file  */}
-					<TouchableOpacity style={contact.sendMail}>
+					<TouchableOpacity style={contact.sendMail} onPress={()=>{window.location.href = "mailto:email@example.com?subject='Hello from Abstract!'&body='Just popped in to say hello'";}}>
 						{/* replace text with icon */}
 						{/* add send mail function */}
 						<Text style={contact.sendMailText}>Send</Text>
