@@ -10,19 +10,27 @@ export default function Contact() {
 	const [senderName, setSenderName] = useState('');
 	const [message, setMessage] = useState('');
 	
+	const nameChangeHandler = (event) => {
+		setSenderName(event.target.value);
+	}
+	
+	const messageChangeHandler = (event) => {
+		setMessage(event.target.value);
+	}
+
 	return (
 		<View>
 			<Navbar />
 			<View style={contact.container}>
 				<View style={contact.form}>
-					<TextInput style={contact.inputFormData} placeholder={'Name ...'}>
+					<TextInput style={contact.inputFormData} placeholder={'Name ...'} onChange={nameChangeHandler}>
 
 					</TextInput>
-					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message ...'}>
+					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message ...'} onChange={messageChangeHandler}>
 						
 					</TextInput>
 					{/* send actual data on click  */}
-					<TouchableOpacity style={contact.sendMail} onPress={()=>{window.location.href = "mailto:email@example.com?subject='Hello from Abstract!'&body='Just popped in to say hello'";}}>
+					<TouchableOpacity style={contact.sendMail} onPress={()=>{window.location.href = "mailto:'{setSenderName}'?&body='{message}'";}}>
 						<Text style={contact.sendMailText}>Send</Text>
 					</TouchableOpacity>
 				</View>
