@@ -29,8 +29,9 @@ export default function Contact() {
 					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message ...'} onChange={messageChangeHandler}>
 						
 					</TextInput>
-					{/* send actual data on click  */}
-					<TouchableOpacity style={contact.sendMail} onPress={()=>{window.location.href = "mailto:'{setSenderName}'?&body='{message}'";}}>
+					<Text>*Having issues, mailto:<Text style={contact.mailId}><u><i> chunnu.bihat@gmail.com</i></u></Text></Text>
+					<TouchableOpacity style={contact.sendMail} onPress={()=>{window.location.href = "mailto:'"+{setSenderName}+"'?&body='"+{message}+"'";}}>
+						{/* make the send button work */}
 						<Text style={contact.sendMailText}>Send</Text>
 					</TouchableOpacity>
 				</View>
@@ -77,6 +78,9 @@ const contact = StyleSheet.create({
 	},
 	inputBody: {
 		height: 150,
+	},
+	mailId: {
+		color: 'blue'
 	},
 	sendMail: {
 		backgroundColor: '#555',
