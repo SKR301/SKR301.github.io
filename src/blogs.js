@@ -8,12 +8,24 @@ export default function Blogs() {
 	return (
 		<View>
 			<Navbar />
-			<Text>Blogs</Text>
+			<View style={blogs.body}>
+				<Text style={blogs.content}>Work under progress!!!</Text>
+			</View>
 		</View>
 	);
 }
 
-
-const styles = StyleSheet.create({
-
+const blogs = StyleSheet.create({
+	body: {
+		marginVertical: 100,
+		justifyContent: 'center',
+		alignContent: 'center',
+	},
+	content: {
+		textAlign: 'center',
+		backgroundColor: 'red',
+		color: '#fff',
+		padding: 20,
+		fontSize: 20
+	},
 });
