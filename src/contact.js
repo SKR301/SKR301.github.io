@@ -9,11 +9,12 @@ const windowHeight = Dimensions.get('window').height;
 export default function Contact() {
 	const [senderName, setSenderName] = useState('');
 	const [message, setMessage] = useState('');
+	const navigate = useNavigate();
 	
 	const nameChangeHandler = (event) => {
 		setSenderName(event.target.value);
 	}
-	
+
 	const messageChangeHandler = (event) => {
 		setMessage(event.target.value);
 	}
@@ -36,7 +37,8 @@ export default function Contact() {
 					</TouchableOpacity>
 				</View>
 				<View style={contact.resume}>
-					<TouchableOpacity style={contact.resumeBtn}>
+					{/* add proper resume here */}
+				<TouchableOpacity style={contact.resumeBtn} onPress={()=>{window.open('https://drive.google.com/uc?export=download&id=1Rn9VSxnj969gfE9nrBbgqz-T2UGJjvq9','_blank')}}>
 						<Text style={contact.resumeText}>Download Resume</Text>
 					</TouchableOpacity>
 				</View>
@@ -63,7 +65,7 @@ const contact = StyleSheet.create({
 		borderRightWidth: 2,
 	},
 	inputFormData: {
-		backgroundColor: '#eee',
+		backgroundColor: '#fff',
 		borderRadius: 20,
 		padding: 20,
 		fontSize: 15,
