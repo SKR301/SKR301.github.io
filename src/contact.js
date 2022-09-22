@@ -37,8 +37,8 @@ export default function Contact() {
 					</TouchableOpacity>
 				</View>
 				<View style={contact.resume}>
-					{/* add proper resume here */}
-				<TouchableOpacity style={contact.resumeBtn} onPress={()=>{window.open('https://drive.google.com/uc?export=download&id=1Rn9VSxnj969gfE9nrBbgqz-T2UGJjvq9','_blank')}}>
+					{/* TODO: remove resume header footer */}
+				<TouchableOpacity style={contact.resumeBtn} onPress={()=>{window.open('https://drive.google.com/uc?export=download&id=14R5-094MejTRehPRjEIVuMMfjM2XcqAA','_blank')}}>
 						<Text style={contact.resumeText}>Download Resume</Text>
 					</TouchableOpacity>
 				</View>
