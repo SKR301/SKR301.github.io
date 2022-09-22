@@ -19,20 +19,30 @@ export default function Contact() {
 		setMessage(event.target.value);
 	}
 
+	const sendOnClickHander = () => {
+		if(senderName == ""){
+			alert('Please enter your name.');
+		} else if(message == ""){
+			alert('Cannot send an empty mail.');
+		} else {
+			window.location.href = "mailto:'"+{senderName}+"'?&body='"+{message}+"'";
+		}
+	}
+
 	return (
 		<View>
 			<Navbar />
 			<View style={contact.container}>
 				<View style={contact.form}>
-					<TextInput style={contact.inputFormData} placeholder={'Name ...'} onChange={nameChangeHandler}>
+					<TextInput style={contact.inputFormData} placeholder={'Name*'} onChange={nameChangeHandler}>
 
 					</TextInput>
-					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message ...'} onChange={messageChangeHandler}>
+					<TextInput style={[contact.inputFormData, contact.inputBody]} multiline={true} placeholder={'Message*'} onChange={messageChangeHandler}>
 						
 					</TextInput>
 					<Text>*Having issues, mailto:<Text style={contact.mailId}><u><i> chunnu.bihat@gmail.com</i></u></Text></Text>
-					<TouchableOpacity style={contact.sendMail} onPress={()=>{window.location.href = "mailto:'"+{setSenderName}+"'?&body='"+{message}+"'";}}>
-						{/* make the send button work */}
+					<TouchableOpacity style={contact.sendMail} onPress={sendOnClickHander}>
+						{/* TODO: make the send button work */}
 						<Text style={contact.sendMailText}>Send</Text>
 					</TouchableOpacity>
 				</View>
