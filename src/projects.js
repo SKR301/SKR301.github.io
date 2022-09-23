@@ -10,7 +10,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Projects() {
-	const [projectCategoryDisplayStatus, setProjectCategoryDisplayyStatus] = useState([1,1,1])
+	const [projectCategoryDisplayStatus, setProjectCategoryDisplayStatus] = useState([1,1,1])
 	const [projectDet, setProjectDet] = useState([
 		{
 			projectCategory: 'Web',
@@ -127,7 +127,7 @@ export default function Projects() {
 	const categoryTitleClickHandler = (index) => {
 		let newProjectCategoryDisplayStatus = [...projectCategoryDisplayStatus];
 		newProjectCategoryDisplayStatus[index] = !newProjectCategoryDisplayStatus[index];
-		setProjectCategoryDisplayyStatus(newProjectCategoryDisplayStatus);
+		setProjectCategoryDisplayStatus(newProjectCategoryDisplayStatus);
 	}
 
 	useEffect(()=>{
