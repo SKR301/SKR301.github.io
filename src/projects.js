@@ -213,15 +213,20 @@ export default function Projects() {
 			projectCategory: 'UI-Software',
 			projectCardDet: [{
 				img: snap4,
-				name: 'digitalroot',
-				projectLink: 'https://www.npmjs.com/package/@skr301/digitalroot',
+				name: 'grapy',
+				projectLink: 'https://github.com/SKR301/grapy',
 				overlay: false,
 			},{
 				img: snap4,
-				name: 'metric-clock',
-				projectLink: 'https://www.npmjs.com/package/metric-clock',
+				name: 'Zip-It',
+				projectLink: 'https://github.com/SKR301/Zip-It',
 				overlay: false,
-			},]
+			},{
+				img: snap4,
+				name: 'Get-A-Break',
+				projectLink: 'https://github.com/SKR301/Get-A-Break',
+				overlay: false,
+			}]
 		}
 	]);
 	const navigate = useNavigate();
@@ -259,7 +264,7 @@ export default function Projects() {
 			}
 
 			projectInnerListToRender.push(
-				<TouchableOpacity key={innerIndex} style={projects.projectCard} onPress={()=>{navigate(innerElement.projectLink)}} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
+				<TouchableOpacity key={innerIndex} style={projects.projectCard} onPress={()=>{window.open(innerElement.projectLink,'_blank')}} onMouseEnter={()=>{onMouseEnterCard(index, innerIndex)}} onMouseLeave={()=>{onMouseLeaveCard(index, innerIndex)}}>
 					<Image source={innerElement.img} style={projects.projectImage}/>
 					<View style={(innerElement.overlay)?projects.projectNameOverlay:projects.projectName}>
 						<Text style={projects.projectNameText}>{projectName}</Text>
