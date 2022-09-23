@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from './components/navbar';
 import snap0 from '../assets/projectSnaps/snap0.jpg';
 import snap1 from '../assets/projectSnaps/snap3.jpg';
@@ -16,14 +16,68 @@ export default function Projects() {
 			projectCategory: 'Web',
 			projectCardDet:[{
 				img: snap0,
-				name: 'project0',
-				projectLink: 'link0',
+				name: 'text-analyzer',
+				projectLink: 'https://github.com/SKR301/text-analyzer',
 				overlay: false,
 			},
 			{
 				img: snap0,
-				name: 'project1',
-				projectLink: 'link1',
+				name: 'algo-visualizer',
+				projectLink: 'https://github.com/SKR301/algo-visualizer',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'Chopstick-ML',
+				projectLink: 'https://github.com/SKR301/Chopstick-ML',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'network-scanner',
+				projectLink: 'https://github.com/norkator/network-scanner',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'Moving-Eyes',
+				projectLink: 'https://github.com/maahicodes/Moving-Eyes',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'Maze-Solver',
+				projectLink: 'https://github.com/SKR301/Maze-Solver',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'TheLuckyDice',
+				projectLink: 'https://the-lucky-dice.web.app/',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'TomScott-Card-Game',
+				projectLink: 'https://github.com/SKR301/TomScott-Card-Game',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'is-time-up',
+				projectLink: 'https://is-time-up.web.app/',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'LocalNetworkChat',
+				projectLink: 'https://github.com/SKR301/LocalNetworkChat',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'blockchain',
+				projectLink: 'https://github.com/SKR301/blockchain',
 				overlay: false,
 			}]
 		},{

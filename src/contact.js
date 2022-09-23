@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity, TextInput } from 'react-native';
-import { Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/navbar';
 
 const windowWidth = Dimensions.get('window').width;
@@ -9,7 +8,6 @@ const windowHeight = Dimensions.get('window').height;
 export default function Contact() {
 	const [senderName, setSenderName] = useState('');
 	const [message, setMessage] = useState('');
-	const navigate = useNavigate();
 	
 	const nameChangeHandler = (event) => {
 		setSenderName(event.target.value);
@@ -42,7 +40,7 @@ export default function Contact() {
 					</TextInput>
 					<Text>*Having issues, mailto:<Text style={contact.mailId}><u><i> chunnu.bihat@gmail.com</i></u></Text></Text>
 					<TouchableOpacity style={contact.sendMail} onPress={sendOnClickHander}>
-						{/* TODO: make the send button work */}
+						{/* TODO: test send button */}
 						<Text style={contact.sendMailText}>Send</Text>
 					</TouchableOpacity>
 				</View>
@@ -86,7 +84,6 @@ const contact = StyleSheet.create({
 	inputEmail: {
 	},
 	inputSubject: {
-
 	},
 	inputBody: {
 		height: 150,

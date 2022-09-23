@@ -26,6 +26,7 @@ const blogs = StyleSheet.create({
 		backgroundColor: 'red',
 		color: '#fff',
 		padding: 20,
-		fontSize: 20
+		fontSize: 20,
+		marginHorizontal: 50,
 	},
 });
