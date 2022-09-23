@@ -3,14 +3,18 @@ import { StyleSheet, Text, View, Image, Dimensions, ScrollView, TouchableOpacity
 import { useNavigate } from "react-router-dom";
 import Navbar from './components/navbar';
 import snap0 from '../assets/projectSnaps/snap0.jpg';
-import snap1 from '../assets/projectSnaps/snap3.jpg';
+import snap1 from '../assets/projectSnaps/snap1.jpg';
 import snap2 from '../assets/projectSnaps/snap2.jpg';
+import snap3 from '../assets/projectSnaps/snap3.jpg';
+import snap4 from '../assets/projectSnaps/snap4.jpg';
+import snap5 from '../assets/projectSnaps/snap5.jpg';
+import snap6 from '../assets/projectSnaps/snap6.jpg';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function Projects() {
-	const [projectCategoryDisplayStatus, setProjectCategoryDisplayStatus] = useState([1,1,1])
+	const [projectCategoryDisplayStatus, setProjectCategoryDisplayStatus] = useState([1,1,1,1,1])
 	const [projectDet, setProjectDet] = useState([
 		{
 			projectCategory: 'Web',
@@ -24,6 +28,12 @@ export default function Projects() {
 				img: snap0,
 				name: 'GoFreeLancing',
 				projectLink: 'https://github.com/SKR301/GoFreeLancing',
+				overlay: false,
+			},
+			{
+				img: snap0,
+				name: 'metric-clock',
+				projectLink: 'https://github.com/SKR301/Metric-Clock',
 				overlay: false,
 			},
 			{
@@ -186,6 +196,32 @@ export default function Projects() {
 				projectLink: 'https://github.com/SKR301/snyf-py',
 				overlay: false,
 			}]
+		},{
+			projectCategory: 'npm',
+			projectCardDet: [{
+				img: snap3,
+				name: 'digitalroot',
+				projectLink: 'https://www.npmjs.com/package/@skr301/digitalroot',
+				overlay: false,
+			},{
+				img: snap3,
+				name: 'metric-clock',
+				projectLink: 'https://www.npmjs.com/package/metric-clock',
+				overlay: false,
+			},]
+		},{
+			projectCategory: 'UI-Software',
+			projectCardDet: [{
+				img: snap4,
+				name: 'digitalroot',
+				projectLink: 'https://www.npmjs.com/package/@skr301/digitalroot',
+				overlay: false,
+			},{
+				img: snap4,
+				name: 'metric-clock',
+				projectLink: 'https://www.npmjs.com/package/metric-clock',
+				overlay: false,
+			},]
 		}
 	]);
 	const navigate = useNavigate();
@@ -214,6 +250,7 @@ export default function Projects() {
 
 	const projectListToRender = [];
 	projectDet.map((element, index) => {
+		console.log(element);
 		const projectInnerListToRender = [];
 		element.projectCardDet.map((innerElement, innerIndex) => {
 			let projectName = innerElement.name;
