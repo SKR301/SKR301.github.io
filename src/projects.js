@@ -84,14 +84,44 @@ export default function Projects() {
 			projectCategory: 'Android',
 			projectCardDet:[{
 				img: snap1,
-				name: 'project0',
-				projectLink: 'link0',
+				name: 'MouseRemote',
+				projectLink: 'https://apt.izzysoft.de/fdroid/index/apk/com.akshayaap.mouseremote',
 				overlay: false,
 			},
 			{
 				img: snap1,
-				name: 'project1',
-				projectLink: 'link1',
+				name: 'click-random',
+				projectLink: 'https://github.com/SKR301/click-random',
+				overlay: false,
+			},
+			{
+				img: snap1,
+				name: 'cryptography',
+				projectLink: 'https://play.google.com/store/apps/details?id=com.nitramite.cryptography',
+				overlay: false,
+			},
+			{
+				img: snap1,
+				name: 'WifiCracker',
+				projectLink: 'https://github.com/SKR301/WifiCracker',
+				overlay: false,
+			},
+			{
+				img: snap1,
+				name: 'GuessTheName',
+				projectLink: 'https://github.com/SKR301/GuessTheName',
+				overlay: false,
+			},
+			{
+				img: snap1,
+				name: 'OnlyNotepad',
+				projectLink: 'https://github.com/SKR301/OnlyNotepad',
+				overlay: false,
+			},
+			{
+				img: snap1,
+				name: 'The-Crypter',
+				projectLink: 'https://github.com/SKR301/The-Crypter',
 				overlay: false,
 			}]
 		},{
