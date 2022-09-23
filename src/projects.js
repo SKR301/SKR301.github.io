@@ -22,6 +22,12 @@ export default function Projects() {
 			},
 			{
 				img: snap0,
+				name: 'GoFreeLancing',
+				projectLink: 'https://github.com/SKR301/GoFreeLancing',
+				overlay: false,
+			},
+			{
+				img: snap0,
 				name: 'algo-visualizer',
 				projectLink: 'https://github.com/SKR301/algo-visualizer',
 				overlay: false,
@@ -128,14 +134,56 @@ export default function Projects() {
 			projectCategory: 'Console',
 			projectCardDet:[{
 				img: snap2,
-				name: 'project0',
-				projectLink: 'link0',
+				name: 'Facial-recognition',
+				projectLink: 'https://github.com/SKR301/Facial-recognition',
 				overlay: false,
 			},
 			{
 				img: snap2,
-				name: 'project1',
-				projectLink: 'link1',
+				name: 'Wifi-Password-Cracker-BruteForce',
+				projectLink: 'https://github.com/SKR301/Wifi-Password-Cracker-BruteForce',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'open-intelligence',
+				projectLink: 'https://github.com/SKR301/open-intelligence',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'pyc-to-num',
+				projectLink: 'https://github.com/SKR301/pyc-to-num',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'Adaptive-Huffman-Coding',
+				projectLink: 'https://github.com/SKR301/Adaptive-Huffman-Coding',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'lolipop-cipher',
+				projectLink: 'https://github.com/SKR301/lolipop-cipher',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'Machine-Learning-cpp',
+				projectLink: 'https://github.com/SKR301/Machine-Learning-cpp',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'Zip-It',
+				projectLink: 'https://github.com/SKR301/Zip-It',
+				overlay: false,
+			},
+			{
+				img: snap2,
+				name: 'snyf-py',
+				projectLink: 'https://github.com/SKR301/snyf-py',
 				overlay: false,
 			}]
 		}
